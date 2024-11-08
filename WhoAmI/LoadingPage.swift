@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoadingPage: View {
     var body: some View {
-        Text("WhoAmI?")
+        Text("Test")
     }
 }
 
