@@ -20,19 +20,36 @@ struct LandingPage: View {
                     .blur(radius: 100)
                     .opacity(0.3)
                 
-                Text("WhoAmI?")
-                    .font(.largeTitle)
+                VStack {
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    
+                    (
+                        Text("WhoAmI")
+                            .foregroundColor(.white)
+                        + Text("?")
+                            .foregroundColor(.accentPurple)
+                    )
+                    .font(.system(size: 45))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
-                
-                Text("Get Started")
-                    .frame(width: 300, height: 50)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .background(Color.gray1)
-                    .cornerRadius(25)
-                
-                // test
+                    
+                    
+                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    
+                    Text("Get Started")
+                        .frame(width: 300, height: 50)
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .background(Color.gray1)
+                        .cornerRadius(25)
+                    
+                    Spacer()
+                }
             }
         }
     }
