@@ -11,7 +11,7 @@ import SwiftUI
 struct WhoAmIApp: App {
     var body: some Scene {
         WindowGroup {
-            LoadingPage()
+            LandingPage()
         }
     }
 }
