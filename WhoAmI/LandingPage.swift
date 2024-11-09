@@ -31,6 +31,8 @@ struct LandingPage: View {
                     .foregroundColor(.white)
                     .background(Color.gray1)
                     .cornerRadius(25)
+                
+                // test
             }
         }
     }
