@@ -7,9 +7,25 @@
 
 import SwiftUI
 
+// Enum for the possible navigation targets
+enum NavigationTarget: Hashable {
+    case signupPhone
+    case signupEmail
+}
+
+// ObservableObject to manage navigation state
+class NavigationState: ObservableObject {
+    @Published var phoneNavigate = false
+    @Published var emailNavigate = false
+}
+
 struct LandingPage: View {
+    
+    @State private var isPopupPresented: Bool = false
+    @StateObject private var navigationState = NavigationState()
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color(.black)
                     .ignoresSafeArea()
@@ -35,21 +51,35 @@ struct LandingPage: View {
                     .font(.system(size: 45))
                     .fontWeight(.bold)
                     
-                    
-                    
                     Spacer()
                     Spacer()
                     Spacer()
                     
-                    Text("Get Started")
-                        .frame(width: 300, height: 50)
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .background(Color.gray1)
-                        .cornerRadius(25)
+                    Button(action: {
+                        isPopupPresented.toggle()
+                    }) {
+                        Text("Get Started")
+                            .frame(width: 300, height: 50)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .background(Color.gray1)
+                            .cornerRadius(25)
+                    }
                     
                     Spacer()
                 }
+            }
+            .popover(isPresented: $isPopupPresented, content: {
+                GetStartedPopup()
+                    .presentationDetents([.medium])
+                    .environmentObject(navigationState)
+            })
+            // Navigation Links for conditional navigation
+            .navigationDestination(isPresented: $navigationState.phoneNavigate) {
+                SignupPhonePage()
+            }
+            .navigationDestination(isPresented: $navigationState.emailNavigate) {
+                SignupEmailPage()
             }
         }
     }
