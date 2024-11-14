@@ -10,6 +10,7 @@ import SwiftUI
 struct GetStartedPopup: View {
     
     @Environment(\.dismiss) var dissmiss
+    @EnvironmentObject var navigationState: NavigationState
     
     var body: some View {
         
@@ -53,7 +54,8 @@ struct GetStartedPopup: View {
                     }
                     
                     Button(action: {
-                        // action
+                        dissmiss()
+                        navigationState.phoneNavigate.toggle()
                     }) {
                         Text("Continue with Phone")
                             .frame(width: 350, height: 60)
@@ -64,7 +66,8 @@ struct GetStartedPopup: View {
                             
                     }
                     Button(action: {
-                        // action/
+                        dissmiss()
+                        navigationState.emailNavigate.toggle()
                     }) {
                         Text("Continue with Email")
                             .frame(width: 350, height: 60)
